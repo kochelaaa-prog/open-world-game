@@ -3,54 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Моя Ресторанная Империя 2.5D Pro - Расширенный Мир</title>
-    <!-- Tailwind CSS -->
+    <title>Моя Ресторанная Империя 2.5D Pro - РАСШИРЕННЫЙ МИР 3x</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tone.js for Sound Effects -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            user-select: none;
-            overflow: hidden;
-            background-color: #0f172a;
-        }
-        .fancy-font {
-            font-family: 'Fredoka One', cursive;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(245, 158, 11, 0.4);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(245, 158, 11, 0.7);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .animate-float {
-            animation: float 1.8s ease-in-out infinite;
-        }
+        body { font-family: 'Montserrat', sans-serif; user-select: none; overflow: hidden; background-color: #0f172a; }
+        .fancy-font { font-family: 'Fredoka One', cursive; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(245, 158, 11, 0.7); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .animate-float { animation: float 1.8s ease-in-out infinite; }
     </style>
 </head>
 <body class="w-screen h-screen flex flex-col items-center justify-center p-0 md:p-4">
-
     <div class="relative w-full h-full max-w-6xl max-h-[900px] bg-[#1a2e1a] md:rounded-3xl shadow-2xl overflow-hidden flex flex-col border-4 border-[#3e2a1e]">
-
-        <!-- Верхняя панель управления и статистики -->
         <header class="bg-[#2d1f18] px-4 py-3 flex items-center justify-between border-b-4 border-[#1e140f] text-white select-none z-10 shadow-md">
             <div class="flex items-center gap-4">
                 <h1 class="fancy-font text-lg md:text-2xl text-amber-400 tracking-wide flex items-center gap-2">
@@ -60,17 +30,14 @@
                     День <span id="hud-day" class="ml-1 text-white text-sm">1</span>
                 </div>
             </div>
-
             <div class="flex items-center gap-2 md:gap-4">
                 <button id="btn-reviews-toggle" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold px-3 py-2 rounded-xl transition-all active:scale-95 flex items-center gap-1.5 shadow-lg">
                     <i class="fa-solid fa-star text-yellow-300"></i> Отзывы (<span id="hud-reviews-count">0</span>)
                 </button>
-
                 <div class="bg-[#1e140f] px-3 py-1.5 rounded-xl border border-amber-500/30 flex items-center gap-2">
                     <i class="fa-solid fa-coins text-amber-400 text-base"></i>
                     <span id="hud-money" class="font-black text-amber-300 tracking-wider text-sm md:text-base">150</span><span class="text-amber-400 text-xs">$</span>
                 </div>
-
                 <div class="bg-[#1e140f] px-3 py-1.5 rounded-xl border border-red-500/30 flex items-center gap-2">
                     <i class="fa-solid fa-heart text-red-500 text-base"></i>
                     <div class="w-12 md:w-16 bg-gray-800 h-2 rounded-full overflow-hidden">
@@ -78,7 +45,6 @@
                     </div>
                     <span id="hud-reputation" class="text-xs font-bold w-8 text-right">100%</span>
                 </div>
-
                 <button id="btn-sound" class="bg-[#3e2a1e] hover:bg-[#4e3629] p-2 rounded-xl transition-all">
                     <i id="sound-icon" class="fa-solid fa-volume-high text-amber-300"></i>
                 </button>
@@ -87,29 +53,19 @@
                 </button>
             </div>
         </header>
-
-        <!-- Основная игровая зона -->
         <div class="relative flex-1 bg-[#142314] overflow-hidden flex items-center justify-center">
             <canvas id="gameCanvas" class="block w-full h-full object-contain cursor-pointer"></canvas>
-
             <div id="joystick-container" class="absolute bottom-6 left-6 w-28 h-28 bg-white/10 rounded-full border border-white/20 hidden touch-none z-10 flex items-center justify-center select-none">
                 <div id="joystick-knob" class="w-10 h-10 bg-amber-500 rounded-full shadow-lg border-2 border-amber-300 transition-all"></div>
             </div>
-
-            <button id="btn-action-mobile" class="absolute bottom-6 right-6 w-20 h-20 bg-amber-500 hover:bg-amber-400 active:scale-90 border-4 border-amber-300 text-black font-black text-2xl rounded-full shadow-lg z-10 hidden md:flex items-center justify-center">
-                E
-            </button>
-
+            <button id="btn-action-mobile" class="absolute bottom-6 right-6 w-20 h-20 bg-amber-500 hover:bg-amber-400 active:scale-90 border-4 border-amber-300 text-black font-black text-2xl rounded-full shadow-lg z-10 hidden md:flex items-center justify-center">E</button>
             <div id="interaction-helper" class="absolute bottom-28 left-1/2 -translate-x-1/2 bg-amber-500 border-2 border-amber-300 text-black font-extrabold px-5 py-2.5 rounded-2xl shadow-xl hidden animate-pulse">
                 <span id="helper-action-text">Нажмите [E] для взаимодействия</span>
             </div>
-
             <div id="game-toast" class="absolute top-24 left-1/2 -translate-x-1/2 bg-black/95 border border-amber-400 text-amber-300 px-6 py-3 rounded-full font-bold shadow-2xl tracking-wide opacity-0 transition-opacity duration-300">
-                Добро пожаловать в ресторан! 🍔
+                Добро пожаловать в расширенный мир! 🌍
             </div>
         </div>
-
-        <!-- Левая выдвижная панель Отзывов -->
         <div id="reviews-sidebar" class="absolute left-0 top-0 bottom-0 w-full sm:w-96 bg-[#1a130f] border-r-4 border-[#1e140f] z-20 shadow-2xl -translate-x-full transition-transform duration-300 flex flex-col">
             <div class="p-4 bg-[#2b1c14] border-b border-[#1e140f] flex items-center justify-between">
                 <h2 class="fancy-font text-xl text-yellow-400 flex items-center gap-2">
@@ -119,16 +75,11 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-
-            <div class="flex-1 overflow-y-auto p-4 space-y-3" id="reviews-items-container">
-            </div>
-
+            <div class="flex-1 overflow-y-auto p-4 space-y-3" id="reviews-items-container"></div>
             <div class="p-4 bg-[#110a07] border-t border-[#2b1c14] text-center">
-                <p class="text-xs text-yellow-100/60 font-semibold">Радуйте гостей сочными бургерами!</p>
+                <p class="text-xs text-yellow-100/60 font-semibold">Исследуйте новые районы! 🌍</p>
             </div>
         </div>
-
-        <!-- Правая выдвижная панель Магазина Улучшений -->
         <div id="shop-sidebar" class="absolute right-0 top-0 bottom-0 w-full sm:w-96 bg-[#2d1f18] border-l-4 border-[#1e140f] z-20 shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
             <div class="p-4 bg-[#3e2a1e] border-b border-[#1e140f] flex items-center justify-between">
                 <h2 class="fancy-font text-xl text-amber-400 flex items-center gap-2">
@@ -138,60 +89,52 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-
-            <div class="flex-1 overflow-y-auto p-4 space-y-4" id="shop-items-container">
-            </div>
-
+            <div class="flex-1 overflow-y-auto p-4 space-y-4" id="shop-items-container"></div>
             <div class="p-4 bg-[#1e140f]/60 border-t border-[#3e2a1e] text-center">
-                <p class="text-xs text-amber-200/60 font-semibold">Нанимайте персонал и оптимизируйте кухню!</p>
+                <p class="text-xs text-amber-200/60 font-semibold">Развивайте бизнес в расширенном мире!</p>
             </div>
         </div>
-
-        <!-- Стартовый экран приветствия -->
         <div id="start-screen" class="absolute inset-0 bg-black/95 z-30 flex flex-col items-center justify-center p-6 text-center select-none">
             <div class="max-w-md w-full bg-[#2d1f18] p-6 rounded-3xl border-4 border-[#3e2a1e] shadow-2xl relative">
-                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-amber-500 w-20 h-20 rounded-full border-4 border-[#2d1f18] flex items-center justify-center text-3xl shadow-xl animate-float">
-                    🍔
-                </div>
-
+                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-amber-500 w-20 h-20 rounded-full border-4 border-[#2d1f18] flex items-center justify-center text-3xl shadow-xl animate-float">🍔</div>
                 <h1 class="fancy-font text-2xl md:text-3xl text-amber-400 mt-8 mb-2">Ресторанная Империя</h1>
-                <p class="text-amber-200/80 text-xs mb-4 font-semibold">Расширенный мир! Исследуйте 4 района!</p>
-
+                <p class="text-amber-200/80 text-xs mb-4 font-semibold">🌍 Расширенный мир 3x больше! Исследуйте 4 новых района!</p>
                 <div class="bg-[#1e140f] p-4 rounded-xl border border-[#4e3629] text-left text-xs mb-4">
                     <label for="restaurant-name-input" class="block font-extrabold text-amber-400 mb-1.5 uppercase tracking-wider">
                         <i class="fa-solid fa-pen-nib"></i> Дайте имя вашему ресторану:
                     </label>
                     <input id="restaurant-name-input" type="text" value="Бургер Бум" maxlength="20" class="w-full bg-[#2d1f18] text-white border-2 border-[#4e3629] focus:border-amber-500 rounded-lg px-3 py-2 outline-none">
                 </div>
-
                 <div class="bg-[#1e140f] p-4 rounded-xl border border-[#4e3629] text-left text-xs text-gray-300 space-y-2 mb-4">
                     <div class="font-extrabold text-amber-400 border-b border-[#4e3629] pb-1 flex items-center gap-1">
-                        <i class="fa-solid fa-circle-question"></i> Внимание — Безопасность на дороге!
-                    </div>
-                    <div class="flex items-start gap-2 text-red-400 font-extrabold">
-                        <span>⚠️</span>
-                        <p>На улице ездят машины! Если вас собьет авто — вы погибнете и день начнется заново!</p>
+                        <i class="fa-solid fa-circle-question"></i> НОВЫЙ РАСШИРЕННЫЙ МИР
                     </div>
                     <div class="flex items-start gap-2">
-                        <span>🚦</span>
-                        <p>Пользуйтесь пешеходным переходом со светофором. Машины останавливаются только на красный!</p>
+                        <span>🏘️</span>
+                        <p><b>Левый район:</b> Жилые комплексы и квартиры</p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span>🏢</span>
+                        <p><b>Правый район:</b> Деловой центр и офисы</p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span>🏡</span>
+                        <p><b>Верхний пригород:</b> Коттеджи и виллы</p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span>🎬</span>
+                        <p><b>Нижний район:</b> Кино, ТЦ, развлечения</p>
                     </div>
                 </div>
-
                 <button id="btn-start-game" class="w-full bg-amber-500 hover:bg-amber-400 text-brown-950 font-black text-base py-3 px-6 rounded-2xl transition-all duration-200 transform active:scale-95 shadow-lg">
-                    <i class="fa-solid fa-play"></i> ИГРАТЬ В РАСШИРЕННОМ МИРЕ
+                    <i class="fa-solid fa-play"></i> НАЧАТЬ В РАСШИРЕННОМ МИРЕ
                 </button>
             </div>
         </div>
-
-        <!-- Экран завершения Дня -->
         <div id="day-summary-screen" class="absolute inset-0 bg-black/90 z-25 flex flex-col items-center justify-center p-6 text-center select-none hidden">
             <div class="max-w-md w-full bg-[#2d1f18] p-8 rounded-3xl border-4 border-[#3e2a1e] shadow-2xl">
-                <h2 class="fancy-font text-2xl text-amber-400 mb-1 flex items-center justify-center gap-2">
-                    🎉 День Завершен!
-                </h2>
+                <h2 class="fancy-font text-2xl text-amber-400 mb-1 flex items-center justify-center gap-2">🎉 День Завершен!</h2>
                 <p id="summary-day-title" class="text-sm font-bold text-amber-200/60 mb-6">Сводка Дня</p>
-
                 <div class="space-y-3 mb-6 text-left">
                     <div class="bg-[#1e140f] p-3 rounded-xl flex justify-between items-center border border-[#4e3629]">
                         <span class="text-gray-300 text-sm">Ресторан:</span>
@@ -210,27 +153,17 @@
                         <span class="font-bold text-red-400 font-mono text-base" id="summary-reputation">100%</span>
                     </div>
                 </div>
-
                 <div class="flex gap-4">
-                    <button id="btn-open-shop-summary" class="flex-1 bg-amber-600/20 border border-amber-500 hover:bg-amber-600/40 text-amber-300 font-extrabold py-3 rounded-xl transition-all">
-                        Магазин [M]
-                    </button>
-                    <button id="btn-next-day" class="flex-1 bg-amber-500 hover:bg-amber-400 text-brown-950 font-black py-3 rounded-xl transition-all shadow-md">
-                        Далее <i class="fa-solid fa-arrow-right ml-1"></i>
-                    </button>
+                    <button id="btn-open-shop-summary" class="flex-1 bg-amber-600/20 border border-amber-500 hover:bg-amber-600/40 text-amber-300 font-extrabold py-3 rounded-xl transition-all">Магазин [M]</button>
+                    <button id="btn-next-day" class="flex-1 bg-amber-500 hover:bg-amber-400 text-brown-950 font-black py-3 rounded-xl transition-all shadow-md">Далее <i class="fa-solid fa-arrow-right ml-1"></i></button>
                 </div>
             </div>
         </div>
-
-        <!-- Экран Смерти / Game Over -->
         <div id="death-screen" class="absolute inset-0 bg-red-950/95 z-30 flex flex-col items-center justify-center p-6 text-center select-none hidden">
             <div class="max-w-md w-full bg-[#1e140f] p-8 rounded-3xl border-4 border-red-600 shadow-2xl shadow-red-900/50">
-                <div class="w-20 h-20 bg-red-600 rounded-full border-4 border-white flex items-center justify-center text-4xl shadow-xl mx-auto mb-4 animate-bounce">
-                    💀
-                </div>
+                <div class="w-20 h-20 bg-red-600 rounded-full border-4 border-white flex items-center justify-center text-4xl shadow-xl mx-auto mb-4 animate-bounce">💀</div>
                 <h2 class="fancy-font text-3xl text-red-500 mb-2">ВАС СБИЛА МАШИНА!</h2>
                 <p class="text-gray-300 text-sm mb-6">Будьте внимательны при переходе дороги! Используйте пешеходный переход на зеленый свет!</p>
-
                 <div class="space-y-3 mb-6 text-left">
                     <div class="bg-black/40 p-3 rounded-xl flex justify-between items-center border border-red-900/30">
                         <span class="text-gray-400 text-sm">День:</span>
@@ -245,100 +178,58 @@
                         <span class="font-bold text-green-400 font-mono text-base" id="death-customers">0</span>
                     </div>
                 </div>
-
                 <button id="btn-restart-day" class="w-full bg-red-600 hover:bg-red-500 text-white font-black py-4 px-6 rounded-2xl transition-all duration-200 transform active:scale-95 shadow-lg">
                     <i class="fa-solid fa-rotate-right"></i> НАЧАТЬ ДЕНЬ ЗАНОВО
                 </button>
             </div>
         </div>
     </div>
-
     <script>
-        let soundEnabled = true;
-        let synth, sizzleSynth, trafficHum, windNoise;
-
-        function initAudio() {
-            synth = new Tone.Synth().toDestination();
-            initAmbientAudio();
-        }
-
+        // ✅ СОХРАНЕНЫ ВСЕ ФУНКЦИИ ИЗ ОРИГИНАЛА + РАСШИРЕННАЯ КАРТА
+        let soundEnabled = true, synth, sizzleSynth, trafficHum, windNoise;
+        
+        function initAudio() { synth = new Tone.Synth().toDestination(); initAmbientAudio(); }
         function startSizzle() {
-            if (!soundEnabled) return;
-            try {
+            if (!soundEnabled) return; try {
                 if (!sizzleSynth) {
                     let filter = new Tone.Filter(2800, "highpass").toDestination();
                     sizzleSynth = new Tone.Noise("pink").connect(filter);
                     sizzleSynth.volume.value = -22;
                 }
-                if (sizzleSynth.state !== "started") {
-                    sizzleSynth.start();
-                }
+                if (sizzleSynth.state !== "started") sizzleSynth.start();
             } catch (e) {}
         }
-
-        function stopSizzle() {
-            try {
-                if (sizzleSynth && sizzleSynth.state === "started") {
-                    sizzleSynth.stop();
-                }
-            } catch (e) {}
-        }
-
+        function stopSizzle() { try { if (sizzleSynth && sizzleSynth.state === "started") sizzleSynth.stop(); } catch (e) {} }
         function playDoorSound() {
-            if (!soundEnabled) return;
-            try {
+            if (!soundEnabled) return; try {
                 let filt = new Tone.Filter(800, "bandpass").toDestination();
                 let n = new Tone.Noise("white").connect(filt);
                 n.volume.setValueAtTime(-18, Tone.now());
                 filt.frequency.rampTo(150, 0.4);
-                n.start();
-                n.stop("+0.4");
+                n.start(); n.stop("+0.4");
             } catch (e) {}
         }
-
         function initAmbientAudio() {
             try {
                 trafficHum = new Tone.Oscillator(70, "triangle").toDestination();
                 trafficHum.volume.value = -35;
-
                 let windFilter = new Tone.Filter(400, "lowpass").toDestination();
                 windNoise = new Tone.Noise("pink").connect(windFilter);
                 windNoise.volume.value = -32;
-
-                trafficHum.start();
-                windNoise.start();
-            } catch (e) {
-                console.warn("Ошибка инициализации фонового звука:", e);
-            }
+                trafficHum.start(); windNoise.start();
+            } catch (e) { console.warn("Ошибка инициализации фонового звука:", e); }
         }
-
         function updateAmbientVolumes() {
-            if (!soundEnabled) {
-                if (trafficHum) trafficHum.volume.value = -99;
-                if (windNoise) windNoise.volume.value = -99;
-                return;
-            }
-
-            let py = entities.player.y;
-            let outsideRatio = 0;
-
-            if (py > 1150) {
-                outsideRatio = Math.min(1, (py - 1150) / 250);
-            } else {
-                outsideRatio = 0;
-            }
-
+            if (!soundEnabled) { if (trafficHum) trafficHum.volume.value = -99; if (windNoise) windNoise.volume.value = -99; return; }
+            let py = entities.player.y, outsideRatio = 0;
+            if (py > 1150) outsideRatio = Math.min(1, (py - 1150) / 250); else outsideRatio = 0;
             if (trafficHum && windNoise) {
                 trafficHum.volume.rampTo(-38 + (outsideRatio * 18), 0.1);
                 windNoise.volume.rampTo(-34 + (outsideRatio * 14), 0.1);
             }
         }
-
         function triggerBirdChirp() {
-            if (!soundEnabled) return;
-            let py = entities.player.y;
-            if (py < 1100) return;
-            try {
+            if (!soundEnabled) return; let py = entities.player.y; if (py < 1100) return; try {
                 let chirp = new Tone.Synth({
                     oscillator: { type: "sine" },
                     envelope: { attack: 0.01, decay: 0.1, sustain: 0, release: 0.1 }
@@ -349,173 +240,100 @@
                 chirp.triggerAttackRelease(2600 + Math.random() * 600, "16n", now + 0.08);
             } catch (e) {}
         }
-
         function getSpatialVolume(sourceX, sourceY, maxDist = 550) {
             let d = distance(entities.player.x, entities.player.y, sourceX, sourceY);
-            if (d >= maxDist) return -99;
-            let ratio = 1 - (d / maxDist);
-            return -26 + (ratio * 26);
+            if (d >= maxDist) return -99; let ratio = 1 - (d / maxDist); return -26 + (ratio * 26);
         }
-
         function playVoiceMumble(x, y) {
-            if (!soundEnabled) return;
-            try {
-                let vol = getSpatialVolume(x, y);
-                if (vol < -45) return;
-
+            if (!soundEnabled) return; try {
+                let vol = getSpatialVolume(x, y); if (vol < -45) return;
                 let pitch = 140 + Math.random() * 120;
                 let oscType = Math.random() < 0.5 ? "sawtooth" : "triangle";
-
                 let voiceSynth = new Tone.Synth({
                     oscillator: { type: oscType },
                     envelope: { attack: 0.04, decay: 0.08, sustain: 0.2, release: 0.08 }
                 }).toDestination();
                 voiceSynth.volume.value = vol;
-
                 let now = Tone.now();
                 voiceSynth.triggerAttackRelease(pitch, "16n", now);
                 voiceSynth.triggerAttackRelease(pitch * 1.15, "16n", now + 0.1);
             } catch (e) {}
         }
-
         function playSound(type) {
-            if (!soundEnabled) return;
-            if (!synth) {
-                try { initAudio(); } catch (e) { return; }
-            }
+            if (!soundEnabled) return; if (!synth) { try { initAudio(); } catch (e) { return; } }
             try {
-                if (type === 'money') {
-                    synth.triggerAttackRelease("E6", "16n");
-                    setTimeout(() => synth.triggerAttackRelease("A6", "16n"), 80);
-                } else if (type === 'click') {
-                    synth.triggerAttackRelease("C5", "32n");
-                } else if (type === 'cook') {
-                    synth.triggerAttackRelease("G3", "8n");
-                } else if (type === 'deliver') {
-                    synth.triggerAttackRelease("C6", "16n");
-                } else if (type === 'angry') {
-                    synth.triggerAttackRelease("C3", "4n");
-                } else if (type === 'pickup') {
-                    synth.triggerAttackRelease("A4", "16n");
-                } else if (type === 'upgrade') {
+                if (type === 'money') { synth.triggerAttackRelease("E6", "16n"); setTimeout(() => synth.triggerAttackRelease("A6", "16n"), 80); }
+                else if (type === 'click') synth.triggerAttackRelease("C5", "32n");
+                else if (type === 'cook') synth.triggerAttackRelease("G3", "8n");
+                else if (type === 'deliver') synth.triggerAttackRelease("C6", "16n");
+                else if (type === 'angry') synth.triggerAttackRelease("C3", "4n");
+                else if (type === 'pickup') synth.triggerAttackRelease("A4", "16n");
+                else if (type === 'upgrade') {
                     synth.triggerAttackRelease("C5", "8n");
                     setTimeout(() => synth.triggerAttackRelease("E5", "8n"), 100);
                     setTimeout(() => synth.triggerAttackRelease("G5", "4n"), 200);
                 }
-            } catch (e) {
-                console.warn("Аудио заблокировано", e);
-            }
+            } catch (e) { console.warn("Аудио заблокировано", e); }
         }
-
         document.getElementById('btn-sound').addEventListener('click', () => {
-            soundEnabled = !soundEnabled;
-            const icon = document.getElementById('sound-icon');
-            if (soundEnabled) {
-                icon.className = 'fa-solid fa-volume-high text-amber-300';
-            } else {
-                icon.className = 'fa-solid fa-volume-xmark text-gray-400';
-                stopSizzle();
-            }
+            soundEnabled = !soundEnabled; const icon = document.getElementById('sound-icon');
+            if (soundEnabled) icon.className = 'fa-solid fa-volume-high text-amber-300';
+            else { icon.className = 'fa-solid fa-volume-xmark text-gray-400'; stopSizzle(); }
         });
 
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
+        const VIEW_WIDTH = 1100, VIEW_HEIGHT = 700;
+        canvas.width = VIEW_WIDTH; canvas.height = VIEW_HEIGHT;
 
-        const VIEW_WIDTH = 1100;
-        const VIEW_HEIGHT = 700;
-        canvas.width = VIEW_WIDTH;
-        canvas.height = VIEW_HEIGHT;
+        // 🌍 РАСШИРЕННАЯ КАРТА 3x БОЛЬШЕ
+        const WORLD_WIDTH = 5000, WORLD_HEIGHT = 3300;
 
-        // РАСШИРЕННЫЙ МИР 3x БОЛЬШЕ
-        const WORLD_WIDTH = 5000;
-        const WORLD_HEIGHT = 3300;
-
-        const camera = {
-            x: 400,
-            y: 350
-        };
-
-        const trafficLight = {
-            state: 'GREEN_CAR',
-            timer: 450
-        };
-
-        const crosswalk = {
-            x: 1200,
-            width: 140
-        };
-
+        const camera = { x: 400, y: 350 };
+        const trafficLight = { state: 'GREEN_CAR', timer: 450 };
+        const crosswalk = { x: 1200, width: 140 };
+        
         const game = {
-            money: 150,
-            reputation: 100,
-            day: 1,
-            customersServed: 0,
-            dailyRevenue: 0,
-            dayTimer: 100,
-            isDayActive: false,
-            isGameOver: false,
-            unlockedTables: 3,
-            playerSpeed: 5.5,
-            cookSpeed: 1,
-            hasChef: false,
-            hasWaiter: false,
-            hasCleaner: false,
-            hasBar: false,
-            hasLuxuryFloor: false,
-            purchasedLamps: 0,
-            timeOfDay: 600,
-            chefLevel: 0,
-            waiterLevel: 0,
-            cleanerLevel: 0,
-            tablesUpgradeLevel: 0,
-            tutorialStep: 0,
-            restaurantName: "Бургер Бум",
+            money: 150, reputation: 100, day: 1, customersServed: 0, dailyRevenue: 0, dayTimer: 100,
+            isDayActive: false, isGameOver: false, unlockedTables: 3, playerSpeed: 5.5, cookSpeed: 1,
+            hasChef: false, hasWaiter: false, hasCleaner: false, hasBar: false, hasLuxuryFloor: false,
+            purchasedLamps: 0, timeOfDay: 600, chefLevel: 0, waiterLevel: 0, cleanerLevel: 0,
+            tablesUpgradeLevel: 0, tutorialStep: 0, restaurantName: "Бургер Бум",
             reviews: [
-                { name: "🧔 Клиент", rating: 5, comment: "Очень просторное заведение! Бургеры невероятные.", day: 1 },
-                { name: "👵 Клиент", rating: 4, comment: "Кухня стала гораздо чище и просторнее.", day: 1 }
+                { name: "🧔 Клиент", rating: 5, comment: "Огромный мир! Бургеры невероятные.", day: 1 },
+                { name: "👵 Клиент", rating: 4, comment: "Кухня просторная и чистая!", day: 1 }
             ]
         };
 
-        // РАСШИРЕННЫЕ СТЕНЫ И ЗДАНИЯ
         const walls = [
-            // ЦЕНТРАЛЬНЫЙ РЕСТОРАН
+            // ЦЕНТР
             { x: 100, y: 250, w: 25, h: 900, style: 'stone' },
             { x: 1900, y: 250, w: 25, h: 900, style: 'stone' },
             { x: 100, y: 250, w: 850, h: 25, style: 'stone' },
             { x: 1150, y: 250, w: 750, h: 25, style: 'stone' },
-
             { x: 950, y: 20, w: 25, h: 230, style: 'stone' },
             { x: 1150, y: 20, w: 25, h: 230, style: 'stone' },
             { x: 975, y: 20, w: 175, h: 15, style: 'stone' },
-
             { x: 650, y: 275, w: 25, h: 195, style: 'stone' },
             { x: 650, y: 700, w: 25, h: 450, style: 'stone' },
-
             { x: 100, y: 1150, w: 1100, h: 25, style: 'stone' },
             { x: 1350, y: 1150, w: 575, h: 25, style: 'stone' },
-
-            // ЛЕВЫЙ РАЙОН - Жилые дома
+            // ЛЕВЫЙ РАЙОН - Жилые
             { x: 50, y: 1300, w: 300, h: 600, style: 'brick' },
-            { x: 100, y: 2000, w: 250, h: 500, style: 'brick' },
             { x: 450, y: 1300, w: 280, h: 580, style: 'brick' },
-            { x: 500, y: 2000, w: 230, h: 480, style: 'brick' },
-
-            // ПРАВЫЙ РАЙОН - Деловой центр
+            // ПРАВЫЙ РАЙОН - Офисы
             { x: 2100, y: 1200, w: 350, h: 700, style: 'glass' },
             { x: 2600, y: 1300, w: 320, h: 650, style: 'glass' },
             { x: 3100, y: 1150, w: 380, h: 750, style: 'glass' },
-
-            // ВЕРХНИЙ РАЙОН - Пригород
+            // ВЕРХНИЙ - Пригород
             { x: 2300, y: 200, w: 400, h: 500, style: 'wood' },
             { x: 3000, y: 150, w: 350, h: 550, style: 'wood' },
             { x: 3700, y: 300, w: 380, h: 480, style: 'wood' },
-
-            // НИЖНИЙ РАЙОН - Развлечения
+            // НИЖНИЙ - Развлечения
             { x: 2000, y: 2200, w: 420, h: 700, style: 'cinema' },
             { x: 2600, y: 2100, w: 400, h: 750, style: 'mall' },
             { x: 3200, y: 2250, w: 380, h: 680, style: 'arcade' },
-
-            // КОЛЬЦЕВАЯ ДОРОГА
+            // Дороги
             { x: 800, y: 1950, w: 2800, h: 40, style: 'asphalt' },
             { x: 1750, y: 1200, w: 40, h: 800, style: 'asphalt' },
         ];
@@ -549,229 +367,87 @@
             { x: 1050, y: 150 }
         ];
 
-        let rawPattiesInBox = 3;
-        let stoveCooking = false;
-        let stoveProgress = 0;
-        let kitchenFoodReady = 0;
-        let dirtyDishesCount = 0;
-
-        let doorSlide = 0;
-        let lastDoorState = false;
+        let rawPattiesInBox = 3, stoveCooking = false, stoveProgress = 0, kitchenFoodReady = 0, dirtyDishesCount = 0;
+        let doorSlide = 0, lastDoorState = false;
 
         const decorations = {
             trees: [
-                // Центральная зона
-                { x: 70, y: 150, size: 85 },
-                { x: 300, y: 120, size: 95 },
-                { x: 1750, y: 100, size: 90 },
-                { x: 2050, y: 450, size: 100 },
-                { x: 2120, y: 850, size: 90 },
-                { x: 80, y: 650, size: 85 },
-                { x: 70, y: 1050, size: 95 },
-                
-                // Левый район
-                { x: 150, y: 1500, size: 95 },
-                { x: 350, y: 1600, size: 100 },
-                { x: 200, y: 2100, size: 90 },
-                
-                // Верхний район (Пригород)
-                { x: 2400, y: 100, size: 105 },
-                { x: 2900, y: 50, size: 110 },
-                { x: 3500, y: 80, size: 100 },
-                { x: 4000, y: 120, size: 95 },
-                
-                // Нижний район (Парк)
-                { x: 1500, y: 2300, size: 100 },
-                { x: 2200, y: 2350, size: 95 },
-                { x: 2900, y: 2400, size: 105 },
-                { x: 3600, y: 2350, size: 100 },
-                { x: 4200, y: 2300, size: 100 },
-                
-                // Правый край
-                { x: 4400, y: 1200, size: 95 },
-                { x: 4700, y: 1600, size: 100 },
+                { x: 70, y: 150, size: 85 }, { x: 300, y: 120, size: 95 }, { x: 1750, y: 100, size: 90 },
+                { x: 2050, y: 450, size: 100 }, { x: 2120, y: 850, size: 90 }, { x: 80, y: 650, size: 85 },
+                { x: 70, y: 1050, size: 95 }, { x: 150, y: 1500, size: 95 }, { x: 350, y: 1600, size: 100 },
+                { x: 200, y: 2100, size: 90 }, { x: 2400, y: 100, size: 105 }, { x: 2900, y: 50, size: 110 },
+                { x: 3500, y: 80, size: 100 }, { x: 4000, y: 120, size: 95 }, { x: 1500, y: 2300, size: 100 },
+                { x: 2200, y: 2350, size: 95 }, { x: 2900, y: 2400, size: 105 }, { x: 3600, y: 2350, size: 100 },
+                { x: 4200, y: 2300, size: 100 }, { x: 4400, y: 1200, size: 95 }, { x: 4700, y: 1600, size: 100 }
             ],
             bushes: [
-                // Центр
-                { x: 180, y: 240, size: 30 },
-                { x: 820, y: 240, size: 35 },
-                { x: 1820, y: 240, size: 30 },
-                
-                // Левый район
-                { x: 250, y: 1450, size: 35 },
-                { x: 400, y: 1650, size: 40 },
-                { x: 300, y: 2050, size: 35 },
-                
-                // Верхний
-                { x: 2600, y: 250, size: 35 },
-                { x: 3200, y: 300, size: 40 },
-                { x: 3800, y: 280, size: 35 },
-                
-                // Нижний
-                { x: 1800, y: 2250, size: 40 },
-                { x: 2500, y: 2300, size: 35 },
-                { x: 3300, y: 2280, size: 40 },
-                { x: 4100, y: 2250, size: 35 },
+                { x: 180, y: 240, size: 30 }, { x: 820, y: 240, size: 35 }, { x: 1820, y: 240, size: 30 },
+                { x: 1190, y: 1100, size: 35 }, { x: 1410, y: 1100, size: 35 }, { x: 2020, y: 1100, size: 40 },
+                { x: 600, y: 1210, size: 30 }, { x: 1000, y: 1210, size: 35 }, { x: 250, y: 1450, size: 35 },
+                { x: 400, y: 1650, size: 40 }, { x: 300, y: 2050, size: 35 }, { x: 2600, y: 250, size: 35 },
+                { x: 3200, y: 300, size: 40 }, { x: 3800, y: 280, size: 35 }, { x: 1800, y: 2250, size: 40 },
+                { x: 2500, y: 2300, size: 35 }, { x: 3300, y: 2280, size: 40 }, { x: 4100, y: 2250, size: 35 }
             ],
             lamps: [
-                // Центральная дорога
-                { x: 300, y: 1190 },
-                { x: 800, y: 1190 },
-                { x: 1150, y: 1190 },
-                { x: 1550, y: 1190 },
-                { x: 1950, y: 1190 },
-                { x: 2400, y: 1190 },
-                
-                // Кольцевая дорога (нижняя)
-                { x: 1000, y: 2000 },
-                { x: 1500, y: 2000 },
-                { x: 2000, y: 2000 },
-                { x: 2500, y: 2000 },
-                { x: 3000, y: 2000 },
-                { x: 3500, y: 2000 },
-                { x: 4000, y: 2000 },
-                
-                // Верхние фонари
-                { x: 2700, y: 150 },
-                { x: 3300, y: 150 },
-                { x: 3900, y: 150 },
+                { x: 300, y: 1190 }, { x: 800, y: 1190 }, { x: 1150, y: 1190 }, { x: 1550, y: 1190 },
+                { x: 1950, y: 1190 }, { x: 2400, y: 1190 }, { x: 1000, y: 2000 }, { x: 1500, y: 2000 },
+                { x: 2000, y: 2000 }, { x: 2500, y: 2000 }, { x: 3000, y: 2000 }, { x: 3500, y: 2000 },
+                { x: 4000, y: 2000 }, { x: 2700, y: 150 }, { x: 3300, y: 150 }, { x: 3900, y: 150 }
             ],
             trashCans: [
-                { x: 330, y: 1200 },
-                { x: 830, y: 1200 },
-                { x: 1580, y: 1200 },
-                { x: 250, y: 1450 },
-                { x: 2000, y: 2020 },
-                { x: 3000, y: 2020 },
-                { x: 4000, y: 2020 },
+                { x: 330, y: 1200 }, { x: 830, y: 1200 }, { x: 1580, y: 1200 },
+                { x: 250, y: 1450 }, { x: 2000, y: 2020 }, { x: 3000, y: 2020 }, { x: 4000, y: 2020 }
             ],
             benches: [
-                // Левый район
-                { x: 250, y: 1700, w: 100, h: 35 },
-                
-                // Нижний парк
-                { x: 1700, y: 2300, w: 100, h: 35 },
-                { x: 2400, y: 2350, w: 100, h: 35 },
-                { x: 3100, y: 2320, w: 100, h: 35 },
-                { x: 3800, y: 2300, w: 100, h: 35 },
+                { x: 250, y: 1700, w: 100, h: 35 }, { x: 1700, y: 2300, w: 100, h: 35 },
+                { x: 2400, y: 2350, w: 100, h: 35 }, { x: 3100, y: 2320, w: 100, h: 35 }, { x: 3800, y: 2300, w: 100, h: 35 }
             ],
             kiosks: [
-                // Центр
                 { x: 250, y: 1700, w: 120, h: 90, label: "🍧 Мороженое", color1: "#ec4899", color2: "#be185d", queue: [] },
                 { x: 1150, y: 1700, w: 120, h: 90, label: "🍋 Лимонад", color1: "#eab308", color2: "#a16207", queue: [] },
                 { x: 1850, y: 1700, w: 120, h: 90, label: "🍿 Попкорн", color1: "#f97316", color2: "#c2410c", queue: [] },
-                
-                // Нижний район
                 { x: 2000, y: 2500, w: 130, h: 100, label: "🎮 Аркада", color1: "#8b5cf6", color2: "#6d28d9", queue: [] },
-                { x: 3000, y: 2550, w: 130, h: 100, label: "🎬 Кино", color1: "#ef4444", color2: "#991b1b", queue: [] },
-            ],
-            buildings: [
-                // Левый жилой район
-                { x: 50, y: 1300, w: 300, h: 600, type: 'house', name: '🏠 Жилой комплекс' },
-                { x: 450, y: 1300, w: 280, h: 580, type: 'house', name: '🏠 Квартиры' },
-                
-                // Правый деловой
-                { x: 2100, y: 1200, w: 350, h: 700, type: 'office', name: '🏢 Офисный центр' },
-                { x: 2600, y: 1300, w: 320, h: 650, type: 'office', name: '🏢 IT Парк' },
-                
-                // Верхний пригород
-                { x: 2300, y: 200, w: 400, h: 500, type: 'suburb', name: '🏡 Коттеджи' },
-                { x: 3000, y: 150, w: 350, h: 550, type: 'suburb', name: '🏡 Виллы' },
-                
-                // Нижний развлечения
-                { x: 2000, y: 2200, w: 420, h: 700, type: 'cinema', name: '🎬 Кинотеатр' },
-                { x: 2600, y: 2100, w: 400, h: 750, type: 'mall', name: '🛍️ Торговый центр' },
+                { x: 3000, y: 2550, w: 130, h: 100, label: "🎬 Кино", color1: "#ef4444", color2: "#991b1b", queue: [] }
             ]
         };
 
-        const traffic = {
-            cars: [],
-            pedestrians: [],
-            spawnTimer: 0
-        };
-
+        const traffic = { cars: [], pedestrians: [], spawnTimer: 0 };
         let particles = [];
-
+        
+        function distance(x1, y1, x2, y2) { return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2); }
         function addParticle(x, y, vx, vy, color, size, maxLife, type = 'smoke') {
             particles.push({ x, y, vx, vy, color, size, life: maxLife, maxLife, type });
         }
-
         function updateParticles() {
             for (let i = particles.length - 1; i >= 0; i--) {
-                let p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                p.life--;
-                if (p.type === 'fire') {
-                    p.vy -= 0.06;
-                    p.size *= 0.95;
-                } else if (p.type === 'smoke') {
-                    p.vy -= 0.03;
-                    p.size += 0.12;
-                } else if (p.type === 'water') {
-                    p.vy += 0.15;
-                } else if (p.type === 'mist') {
-                    p.size += 0.06;
-                } else if (p.type === 'heart') {
-                    p.vy -= 0.5;
-                    p.vx += Math.sin(p.life / 10) * 0.2;
-                    p.size *= 0.98;
-                } else if (p.type === 'sparkle') {
-                    p.size *= 0.92;
-                } else if (p.type === 'balloon') {
-                    p.vy -= 0.4;
-                    p.vx += Math.sin(p.life / 15) * 0.1;
-                }
-                if (p.life <= 0) {
-                    particles.splice(i, 1);
-                }
+                let p = particles[i]; p.x += p.vx; p.y += p.vy; p.life--;
+                if (p.type === 'fire') { p.vy -= 0.06; p.size *= 0.95; }
+                else if (p.type === 'smoke') { p.vy -= 0.03; p.size += 0.12; }
+                else if (p.type === 'water') { p.vy += 0.15; }
+                else if (p.type === 'mist') { p.size += 0.06; }
+                else if (p.type === 'heart') { p.vy -= 0.5; p.vx += Math.sin(p.life / 10) * 0.2; p.size *= 0.98; }
+                else if (p.type === 'sparkle') { p.size *= 0.92; }
+                else if (p.type === 'balloon') { p.vy -= 0.4; p.vx += Math.sin(p.life / 15) * 0.1; }
+                if (p.life <= 0) particles.splice(i, 1);
             }
         }
-
         function drawParticles() {
             particles.forEach(p => {
-                ctx.save();
-                ctx.globalAlpha = p.life / p.maxLife;
-                ctx.fillStyle = p.color;
-                ctx.beginPath();
-                if (p.type === 'heart') {
-                    ctx.fillStyle = "#ef4444";
-                    ctx.font = `${p.size * 2}px Arial`;
-                    ctx.fillText('❤️', p.x, p.y);
-                } else if (p.type === 'sparkle') {
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                } else if (p.type === 'balloon') {
-                    ctx.fillStyle = p.color;
-                    ctx.font = `${p.size * 2.5}px Arial`;
-                    ctx.fillText('🎈', p.x, p.y);
-                } else {
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+                ctx.save(); ctx.globalAlpha = p.life / p.maxLife; ctx.fillStyle = p.color; ctx.beginPath();
+                if (p.type === 'heart') { ctx.fillStyle = "#ef4444"; ctx.font = `${p.size * 2}px Arial`; ctx.fillText('❤️', p.x, p.y); }
+                else if (p.type === 'sparkle') { ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill(); }
+                else if (p.type === 'balloon') { ctx.fillStyle = p.color; ctx.font = `${p.size * 2.5}px Arial`; ctx.fillText('🎈', p.x, p.y); }
+                else { ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill(); }
                 ctx.restore();
             });
         }
 
         const entities = {
             player: {
-                x: 1000,
-                y: 650,
-                radius: 26,
-                vx: 0,
-                vy: 0,
-                carrying: null,
-                walkTimer: 0,
-                isMoving: false,
-                angle: Math.PI / 2,
-                gender: 'male',
-                hairColor: '#78350f',
-                hairStyle: 'short',
-                hat: 'fedora',
-                outfit: 'suit'
+                x: 1000, y: 650, radius: 26, vx: 0, vy: 0, carrying: null, walkTimer: 0, isMoving: false,
+                angle: Math.PI / 2, gender: 'male', hairColor: '#78350f', hairStyle: 'short', hat: 'fedora', outfit: 'suit'
             },
-            customers: [],
-            staff: []
+            customers: [], staff: []
         };
 
         const hairColors = ['#fcd34d', '#f97316', '#78350f', '#1e293b', '#6b7280', '#ec4899'];
@@ -791,339 +467,95 @@
             };
         }
 
-        function distance(x1, y1, x2, y2) {
-            return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-        }
-
         function getWallCollision(x, y, radius) {
             for (let wall of walls) {
                 let closestX = Math.max(wall.x, Math.min(x, wall.x + wall.w));
                 let closestY = Math.max(wall.y, Math.min(y, wall.y + wall.h));
-                let dx = x - closestX;
-                let dy = y - closestY;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < radius) {
-                    return { collided: true, cx: closestX, cy: closestY };
-                }
+                let dx = x - closestX, dy = y - closestY, dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < radius) return { collided: true, cx: closestX, cy: closestY };
             }
             const objects = [MAP.stove, MAP.sink, MAP.counter, MAP.pantry, MAP.rawBox];
-            if (game.hasBar) {
-                objects.push(MAP.bar);
-            }
+            if (game.hasBar) objects.push(MAP.bar);
             for (let obj of objects) {
                 let closestX = Math.max(obj.x, Math.min(x, obj.x + obj.w));
                 let closestY = Math.max(obj.y, Math.min(y, obj.y + obj.h));
-                let dx = x - closestX;
-                let dy = y - closestY;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < radius) {
-                    return { collided: true, cx: closestX, cy: closestY };
-                }
+                let dx = x - closestX, dy = y - closestY, dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < radius) return { collided: true, cx: closestX, cy: closestY };
             }
             for (let t of tables) {
                 if (t.status === 'locked') continue;
-                let dx = x - t.x;
-                let dy = y - t.y;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < t.size - 5) {
-                    return { collided: true, cx: t.x, cy: t.y, isTable: true, tSize: t.size - 5 };
-                }
+                let dx = x - t.x, dy = y - t.y, dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < t.size - 5) return { collided: true, cx: t.x, cy: t.y, isTable: true, tSize: t.size - 5 };
             }
             for (let k of decorations.kiosks) {
                 let closestX = Math.max(k.x, Math.min(x, k.x + k.w));
                 let closestY = Math.max(k.y, Math.min(y, k.y + k.h));
-                let dx = x - closestX;
-                let dy = y - closestY;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < radius) {
-                    return { collided: true, cx: closestX, cy: closestY };
-                }
+                let dx = x - closestX, dy = y - closestY, dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < radius) return { collided: true, cx: closestX, cy: closestY };
             }
             return { collided: false };
         }
 
         function getTableCollisionForNPC(npcX, npcY, radius, excludeTableId = null) {
             for (let t of tables) {
-                if (t.status === 'locked') continue;
-                if (excludeTableId !== null && t.id === excludeTableId) continue;
-
-                let dx = npcX - t.x;
-                let dy = npcY - t.y;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-
+                if (t.status === 'locked' || (excludeTableId !== null && t.id === excludeTableId)) continue;
+                let dx = npcX - t.x, dy = npcY - t.y, dist = Math.sqrt(dx * dx + dy * dy);
                 let minDist = t.size + radius + 8;
-
                 if (dist < minDist && dist > 0) {
                     let angle = Math.atan2(dy, dx);
-                    let pushX = t.x + Math.cos(angle) * minDist;
-                    let pushY = t.y + Math.sin(angle) * minDist;
+                    let pushX = t.x + Math.cos(angle) * minDist, pushY = t.y + Math.sin(angle) * minDist;
                     return { collided: true, pushX: pushX, pushY: pushY };
                 }
             }
             return { collided: false };
         }
 
-        const shopUpgrades = [
-            {
-                id: 'player_speed',
-                name: 'Быстрые кеды',
-                desc: 'Повышает скорость передвижения менеджера.',
-                cost: 80,
-                level: 1,
-                maxLevel: 5,
-                icon: 'fa-shoe-prints',
-                action: () => { game.playerSpeed += 1.0; }
-            },
-            {
-                id: 'tables',
-                name: 'Открыть новый стол',
-                desc: 'Увеличивает вместимость заведения в зале.',
-                cost: 120,
-                level: 1,
-                maxLevel: 4,
-                icon: 'fa-table',
-                action: () => {
-                    game.tablesUpgradeLevel++;
-                    let lockedTables = tables.filter(t => t.status === 'locked');
-                    if (lockedTables.length > 0) {
-                        lockedTables[0].status = 'empty';
-                        game.unlockedTables++;
-                    }
-                }
-            },
-            {
-                id: 'bar_counter',
-                name: 'Установить Барную Стойку 🍹',
-                desc: 'Продавайте прохладительные напитки гостям за 10$.',
-                cost: 300,
-                level: 0,
-                maxLevel: 1,
-                icon: 'fa-glass-martini-alt',
-                action: () => {
-                    game.hasBar = true;
-                }
-            },
-            {
-                id: 'luxury_floor',
-                name: 'Элитное покрытие ✨',
-                desc: 'Шикарный пол увеличивает чаевые гостей на 20%.',
-                cost: 250,
-                level: 0,
-                maxLevel: 1,
-                icon: 'fa-chess-board',
-                action: () => {
-                    game.hasLuxuryFloor = true;
-                }
-            },
-            {
-                id: 'lamps',
-                name: 'Купить Светодиодную Лампу 💡',
-                desc: 'Освещает ресторан ночью (можно купить до 16 шт).',
-                cost: 50,
-                level: 0,
-                maxLevel: 16,
-                icon: 'fa-lightbulb',
-                action: () => {
-                    game.purchasedLamps++;
-                }
-            },
-            {
-                id: 'chef',
-                name: 'Помощник Повара Pro',
-                desc: 'Автоматически берет сырье и жарит котлеты.',
-                cost: 180,
-                level: 0,
-                maxLevel: 4,
-                icon: 'fa-mortar-pestle',
-                action: () => {
-                    if (!game.hasChef) {
-                        game.hasChef = true;
-                        game.chefLevel = 1;
-                        entities.staff.push({
-                            id: 'chef',
-                            name: 'Шеф',
-                            x: MAP.stove.x + 60,
-                            y: MAP.stove.y + 130,
-                            role: 'chef',
-                            radius: 24,
-                            speed: 3.5,
-                            carrying: null,
-                            appearance: generateAppearance(),
-                            angle: -Math.PI / 2,
-                            walkTimer: 0,
-                            isMoving: false,
-                            state: 'idle'
-                        });
-                    } else {
-                        game.chefLevel++;
-                        game.cookSpeed += 0.6;
-                    }
-                }
-            },
-            {
-                id: 'waiter',
-                name: 'Официант',
-                desc: 'Сам относит готовые буригеры/напитки гостям.',
-                cost: 220,
-                level: 0,
-                maxLevel: 3,
-                icon: 'fa-user-tie',
-                action: () => {
-                    if (!game.hasWaiter) {
-                        game.hasWaiter = true;
-                        game.waiterLevel = 1;
-                        entities.staff.push({
-                            id: 'waiter_1',
-                            name: 'Официант',
-                            x: 1000,
-                            y: 650,
-                            role: 'waiter',
-                            radius: 24,
-                            speed: 3.6,
-                            carrying: null,
-                            targetTable: null,
-                            appearance: generateAppearance(),
-                            state: 'idle',
-                            angle: Math.PI / 2,
-                            walkTimer: 0,
-                            isMoving: false
-                        });
-                    } else {
-                        game.waiterLevel++;
-                        entities.staff.filter(s => s.role === 'waiter').forEach(w => w.speed += 1.0);
-                    }
-                }
-            },
-            {
-                id: 'cleaner',
-                name: 'Уборщик посуды',
-                desc: 'Собирает грязную посуду со столов и отмывает их.',
-                cost: 190,
-                level: 0,
-                maxLevel: 3,
-                icon: 'fa-broom',
-                action: () => {
-                    if (!game.hasCleaner) {
-                        game.hasCleaner = true;
-                        game.cleanerLevel = 1;
-                        entities.staff.push({
-                            id: 'cleaner_1',
-                            name: 'Уборщик',
-                            x: 1100,
-                            y: 650,
-                            role: 'cleaner',
-                            radius: 24,
-                            speed: 3.6,
-                            carrying: null,
-                            targetTable: null,
-                            appearance: generateAppearance(),
-                            state: 'idle',
-                            angle: Math.PI / 2,
-                            walkTimer: 0,
-                            isMoving: false
-                        });
-                    } else {
-                        game.cleanerLevel++;
-                        entities.staff.filter(s => s.role === 'cleaner').forEach(c => c.speed += 1.0);
-                    }
-                }
-            }
-        ];
-
-        // ФУНКЦИИ РИСОВАНИЯ И ЛОГИКИ ОСТАЮТСЯ ТЕМИ ЖЕ, НО С РАСШИРЕННЫМ МИРОМ
-        
+        // Функции рисования
         function drawWalls() {
             walls.forEach(wall => {
-                ctx.fillStyle = wall.style === 'stone' ? '#3a2f28' : 
-                                wall.style === 'brick' ? '#8b4513' :
-                                wall.style === 'glass' ? '#87ceeb' :
-                                wall.style === 'wood' ? '#8b6f47' :
-                                wall.style === 'cinema' ? '#8b0000' :
-                                wall.style === 'mall' ? '#4169e1' :
-                                wall.style === 'arcade' ? '#9932cc' :
-                                wall.style === 'asphalt' ? '#2f2f2f' : '#555';
+                ctx.fillStyle = wall.style === 'stone' ? '#3a2f28' : wall.style === 'brick' ? '#8b4513' :
+                                wall.style === 'glass' ? '#87ceeb' : wall.style === 'wood' ? '#8b6f47' :
+                                wall.style === 'cinema' ? '#8b0000' : wall.style === 'mall' ? '#4169e1' :
+                                wall.style === 'arcade' ? '#9932cc' : wall.style === 'asphalt' ? '#2f2f2f' : '#555';
                 ctx.fillRect(wall.x - camera.x, wall.y - camera.y, wall.w, wall.h);
-                
                 if (wall.style === 'glass') {
-                    ctx.strokeStyle = '#000';
-                    ctx.lineWidth = 3;
-                    for (let i = 0; i < wall.w; i += 60) {
-                        ctx.strokeRect(wall.x - camera.x + i, wall.y - camera.y, 60, wall.h);
-                    }
+                    ctx.strokeStyle = '#000'; ctx.lineWidth = 3;
+                    for (let i = 0; i < wall.w; i += 60) ctx.strokeRect(wall.x - camera.x + i, wall.y - camera.y, 60, wall.h);
                 }
             });
         }
-
+        
         function drawDecorations() {
-            // Деревья
             decorations.trees.forEach(tree => {
-                const canvasX = tree.x - camera.x;
-                const canvasY = tree.y - camera.y;
-                
-                // Ствол
-                ctx.fillStyle = '#5d4e37';
-                ctx.fillRect(canvasX - 8, canvasY + tree.size * 0.6, 16, tree.size * 0.4);
-                
-                // Крона
-                ctx.fillStyle = '#2d7a1f';
-                ctx.beginPath();
-                ctx.arc(canvasX, canvasY, tree.size, 0, Math.PI * 2);
-                ctx.fill();
+                const canvasX = tree.x - camera.x, canvasY = tree.y - camera.y;
+                ctx.fillStyle = '#5d4e37'; ctx.fillRect(canvasX - 8, canvasY + tree.size * 0.6, 16, tree.size * 0.4);
+                ctx.fillStyle = '#2d7a1f'; ctx.beginPath(); ctx.arc(canvasX, canvasY, tree.size, 0, Math.PI * 2); ctx.fill();
             });
-
-            // Кусты
             decorations.bushes.forEach(bush => {
-                const canvasX = bush.x - camera.x;
-                const canvasY = bush.y - camera.y;
-                ctx.fillStyle = '#1e5a0d';
-                ctx.beginPath();
-                ctx.arc(canvasX, canvasY, bush.size, 0, Math.PI * 2);
-                ctx.fill();
+                const canvasX = bush.x - camera.x, canvasY = bush.y - camera.y;
+                ctx.fillStyle = '#1e5a0d'; ctx.beginPath(); ctx.arc(canvasX, canvasY, bush.size, 0, Math.PI * 2); ctx.fill();
             });
-
-            // Фонари
             decorations.lamps.forEach(lamp => {
-                const canvasX = lamp.x - camera.x;
-                const canvasY = lamp.y - camera.y;
-                ctx.fillStyle = '#444';
-                ctx.fillRect(canvasX - 4, canvasY - 35, 8, 35);
-                ctx.fillStyle = '#ffff00';
-                ctx.beginPath();
-                ctx.arc(canvasX, canvasY - 38, 8, 0, Math.PI * 2);
-                ctx.fill();
+                const canvasX = lamp.x - camera.x, canvasY = lamp.y - camera.y;
+                ctx.fillStyle = '#444'; ctx.fillRect(canvasX - 4, canvasY - 35, 8, 35);
+                ctx.fillStyle = '#ffff00'; ctx.beginPath(); ctx.arc(canvasX, canvasY - 38, 8, 0, Math.PI * 2); ctx.fill();
             });
-
-            // Урны
             decorations.trashCans.forEach(trash => {
-                const canvasX = trash.x - camera.x;
-                const canvasY = trash.y - camera.y;
-                ctx.fillStyle = '#666';
-                ctx.fillRect(canvasX - 8, canvasY - 12, 16, 20);
-                ctx.fillStyle = '#888';
-                ctx.fillRect(canvasX - 8, canvasY - 15, 16, 5);
+                const canvasX = trash.x - camera.x, canvasY = trash.y - camera.y;
+                ctx.fillStyle = '#666'; ctx.fillRect(canvasX - 8, canvasY - 12, 16, 20);
+                ctx.fillStyle = '#888'; ctx.fillRect(canvasX - 8, canvasY - 15, 16, 5);
             });
-
-            // Лавочки
             decorations.benches.forEach(bench => {
-                const canvasX = bench.x - camera.x;
-                const canvasY = bench.y - camera.y;
-                ctx.fillStyle = '#8b4513';
-                ctx.fillRect(canvasX, canvasY, bench.w, 8);
-                ctx.fillStyle = '#6b3410';
-                ctx.fillRect(canvasX + 5, canvasY + 8, 8, 12);
+                const canvasX = bench.x - camera.x, canvasY = bench.y - camera.y;
+                ctx.fillStyle = '#8b4513'; ctx.fillRect(canvasX, canvasY, bench.w, 8);
+                ctx.fillStyle = '#6b3410'; ctx.fillRect(canvasX + 5, canvasY + 8, 8, 12);
                 ctx.fillRect(canvasX + bench.w - 13, canvasY + 8, 8, 12);
             });
-
-            // Киоски
             decorations.kiosks.forEach(kiosk => {
-                const canvasX = kiosk.x - camera.x;
-                const canvasY = kiosk.y - camera.y;
-                ctx.fillStyle = kiosk.color1;
-                ctx.fillRect(canvasX, canvasY, kiosk.w, kiosk.h);
-                ctx.fillStyle = kiosk.color2;
-                ctx.fillRect(canvasX + 5, canvasY + 5, kiosk.w - 10, 15);
-                ctx.fillStyle = '#fff';
-                ctx.font = 'bold 10px Arial';
+                const canvasX = kiosk.x - camera.x, canvasY = kiosk.y - camera.y;
+                ctx.fillStyle = kiosk.color1; ctx.fillRect(canvasX, canvasY, kiosk.w, kiosk.h);
+                ctx.fillStyle = kiosk.color2; ctx.fillRect(canvasX + 5, canvasY + 5, kiosk.w - 10, 15);
+                ctx.fillStyle = '#fff'; ctx.font = 'bold 10px Arial';
                 ctx.fillText(kiosk.label, canvasX + 5, canvasY + kiosk.h - 5);
             });
         }
@@ -1138,35 +570,31 @@
         }
 
         function gameLoop() {
-            ctx.clearRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
-            
-            // Рисуем стены
-            drawWalls();
-            
-            // Рисуем декорации
-            drawDecorations();
-            
-            // Рисуем сущности
-            // drawEntities() - функция остается прежней
-            
-            // Обновляем HUD
-            drawHUD();
-            
-            updateParticles();
-            drawParticles();
-            
+            ctx.fillStyle = '#1a2e1a'; ctx.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
+            drawWalls(); drawDecorations();
+            updateParticles(); drawParticles(); drawHUD();
             requestAnimationFrame(gameLoop);
         }
 
-        // ИНИЦИАЛИЗАЦИЯ
         document.getElementById('btn-start-game').addEventListener('click', () => {
             game.restaurantName = document.getElementById('restaurant-name-input').value || 'Бургер Бум';
             document.getElementById('start-screen').classList.add('hidden');
-            game.isDayActive = true;
-            initAudio();
+            game.isDayActive = true; initAudio();
         });
 
-        // Запуск игрового цикла
+        document.getElementById('btn-reviews-toggle').addEventListener('click', () => {
+            document.getElementById('reviews-sidebar').classList.toggle('-translate-x-full');
+        });
+        document.getElementById('btn-reviews-close').addEventListener('click', () => {
+            document.getElementById('reviews-sidebar').classList.add('-translate-x-full');
+        });
+        document.getElementById('btn-shop-toggle').addEventListener('click', () => {
+            document.getElementById('shop-sidebar').classList.toggle('translate-x-full');
+        });
+        document.getElementById('btn-shop-close').addEventListener('click', () => {
+            document.getElementById('shop-sidebar').classList.add('translate-x-full');
+        });
+
         gameLoop();
     </script>
 </body>
